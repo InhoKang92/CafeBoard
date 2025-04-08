@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe.mapper.BoardMapper">
+
+	<sql id="criterial">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item='type' collection="cri.getTypeArr()">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							title like '%'||#{cri.keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							content like '%'||#{cri.keyword}||'%'
+						</when>
+						<when test="type == 'W'.toString()">
+							writer like '%'||#{cri.keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql> 
+    
+    <select id="getList" resultType="com.cafe.domain.BoardVO">
+        select * from tbl_board where bno > 0 order by bno desc
+    </select> 
+    
+    <select id="getNoticeList" resultType="com.cafe.domain.BoardVO">
+    	<![CDATA[ 
+			select * from ( 
+			select /*+INDEX_DESC(tbl_board pk_board) */ rownum rn, bno, boardname, classification, displaytype, title, content, writer, regdate, updatedate, readcount 
+			from tbl_board where bno > 0 and boardname = '공지사항'
+			) where rn < 6
+		]]> 
+    
+    </select> 
+    
+    <insert id="create">
+    	<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+    		select seq_board.nextval from dual
+    	</selectKey>
+    	insert into tbl_board(bno, boardname, classification, title, content, writer) values (#{bno}, #{boardName}, #{classification}, #{title}, #{content}, #{writer})
+    </insert>
+    
+    <select id="read" resultType="com.cafe.domain.BoardVO">
+    	select * from tbl_board where bno = #{bno}
+    </select>
+    
+    <update id="update">
+    	update tbl_board set boardname = #{boardName}, classification = #{classification},  title = #{title}, content = #{content}, writer = #{writer}, updatedate = sysdate where bno = #{bno}
+    </update>
+    
+    <delete id="delete">
+    	delete from tbl_board where bno = #{bno}
+    </delete>
+    
+    <select id="getListWithPaging" resultType="com.cafe.domain.BoardVO">
+  		<![CDATA[
+    		select * from (
+      		select /*+INDEX_DESC(tbl_board pk_board) */ rownum rn, bno, boardname, classification, displaytype, title, content, writer, regdate, updatedate, readcount
+      		from tbl_board where
+      	]]>
+      	
+      	<include refid="criterial"></include>
+      		
+      	<![CDATA[	
+      		 rownum <= #{cri.pageNum} * #{cri.amount}
+      	]]>
+      			<if test="boardName != ''">
+        			and boardname = #{boardName}
+      			</if>
+      	<![CDATA[
+    		) 
+    		where rn > (#{cri.pageNum} -1) * #{cri.amount}
+  		]]>
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from tbl_board where 
+		<include refid="criterial"></include>
+		<if test="boardName != ''">
+        			boardname = #{boardName} and 
+      			</if>
+		bno > 0
+	</select>
+	
+	<update id="readCountUp">
+		update tbl_board set readcount = readcount + 1 where bno = #{bno}
+	
+	</update>
+	
+	<!--  검색조건1  key, val 찍히는 내용 검색--> 
+	<select id="searchTest" resultType="com.cafe.domain.BoardVO">
+		<![CDATA[
+			select * from tbl_board
+			where
+	 	]]>
+	 	<trim prefix="(" suffix=") and"> 
+		<foreach item="val"  index="key" collection="map"  separator="or">
+        	<if test="key == 'T'.toString()">
+		  		title like '%' || #{val} || '%'
+        	</if>
+        	<if test="key == 'C'.toString()">
+		    	content like '%' || #{val} || '%'
+	        </if>
+	        <if test="key == 'W'.toString()">
+		      	writer like '%' || #{val} || '%'
+		 	</if>
+		</foreach>
+		</trim>
+		<![CDATA[
+	 		rownum < 10
+	 	]]>
+	</select>
+    
+</mapper>
