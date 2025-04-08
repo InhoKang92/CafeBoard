@@ -64,6 +64,7 @@
 + 클래스 바인딩 기능으로 각 게시판 타입 선택시 나머지 게시판 타입의 숨김 처리
 + 목록 타입의 게시판은 한 페이지에 노출되는 게시글의 개수를 데이터 바인딩 기능으로 변경
 
+![Image](https://media.githubusercontent.com/media/InhoKang92/CafeBoard/refs/heads/main/src/main/webapp/resources/gifs/BoardList2.gif)
 
 + 목록 페이징 처리 + 검색 타입과 검색어를 입력받아서 해당 데이터를 axios.get의 파라미터로 전달하여 서버 재호출
 
