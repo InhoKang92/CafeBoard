@@ -76,10 +76,9 @@
 ![Image](https://github.com/user-attachments/assets/bf2f91f2-4d52-4996-adff-a6aa67709fce)
 
 + 수정페이지에서 필요 입력 항목 입력 후 수정 버튼 클릭하면 게시글 수정과 함께 목록으로 자동 이동
-
-
 + 삭제 버튼 클릭시 삭제 경고창 출력, 확인 클릭하면 게시글 삭제와 함께 목록으로 자동 이동
 
+![Image](https://github.com/user-attachments/assets/a6ddccee-e8b5-48af-8459-d5bc9f07250d)
 
 #### 댓글
 + 게시글 조회 페이지 하단에서 댓글 작성 가능, 등록 버튼 클릭시 댓글 작성과 함께 댓글 목록 조회
