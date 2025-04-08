@@ -58,6 +58,7 @@
 #### 게시판
 + Router-link에 파라미터로 각 게시판 이름을 전달하고, 해당되는 게시판의 게시글을 목록으로 조회
 
+![Image](https://github.com/user-attachments/assets/63ddbbef-c0a2-4b29-80a9-6a3c29d6e53b)
   
 + 스타일 바인딩 기능으로 체크박스 체크시 display: none 처리를 하여 공지 목록 숨기기
 + 클래스 바인딩 기능으로 각 게시판 타입 선택시 나머지 게시판 타입의 숨김 처리
