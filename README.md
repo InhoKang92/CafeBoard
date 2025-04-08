@@ -88,7 +88,6 @@
 
 + 해당 댓글 우측 미트볼 메뉴 버튼 클릭시 수정/삭제 버튼 노출
 + 수정 버튼 클릭시 댓글 수정 가능
-
-
 + 삭제 버튼 클릭시 경고창 출력, 확인 클릭시 댓글 삭제 후 페이지 재렌더링
 
+![Image](https://github.com/user-attachments/assets/dec0cca4-1aa9-4d58-9a1d-baddbc7dc0f8)
