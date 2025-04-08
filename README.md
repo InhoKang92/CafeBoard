@@ -14,7 +14,7 @@
 
 
 ## 1. 개요 <a id="chapter1"></a>
-+ 프로젝트 목표: Axios 라이브러리를 이용하여 Spring Legacy(Backend)와 Vue.js(Frontend)를 연동, 네이버카페 디자인을 모티브로한 게시판 제작
++ 프로젝트 목표: Axios 라이브러리를 이용하여 Spring Legacy(Backend)와 Vue.js(Frontend)를 연동, 네이버카페를 모티브로한 게시판 제작
 + 개발 기간 : 25/03/17 - 25/04/04
 
   
