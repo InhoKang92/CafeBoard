@@ -7,6 +7,7 @@
 + [기술 스택](#chapter2)
 + [핵심 기능](#chapter3)
 + [주요기능 실행 화면](#chapter4)
++ [개선사항](#chapter5)
 
   
 <br/>
@@ -92,3 +93,11 @@
 + 삭제 버튼 클릭시 경고창 출력, 확인 클릭시 댓글 삭제 후 페이지 재렌더링
 
 ![Image](https://github.com/user-attachments/assets/dec0cca4-1aa9-4d58-9a1d-baddbc7dc0f8)
+
+  
+<br/>
+<br/>
+
+
+## 5. 개선사항 <a id="chapter5"></a>
++ 회원과 관련된 기능(로그인, 시큐리티 등)
