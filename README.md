@@ -67,7 +67,7 @@
 
 + 목록 페이징 처리 + 검색 타입과 검색어를 입력받아서 해당 데이터를 axios.get의 파라미터로 전달하여 서버 재호출
 
-![Image](https://github.com/user-attachments/assets/c5f89ef4-355f-482e-a621-730c783e9eb5)
+![Image](https://github.com/user-attachments/assets/ca7dd444-19c5-498f-9d09-b9122602ac85)
 
 #### 게시글
 + 게시판 선택 후 게시판 종류에 따른 말머리 목록 변경
