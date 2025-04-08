@@ -240,19 +240,27 @@ export default {
 
             window.location.reload(true);
         },
-        replyDelete(e){
+        async replyDelete(e){
             const string = e.target.id;
             const index = string.substr(6, 1);
             this.replyModifyRno = this.replyList[index].rno;
             if(confirm('댓글을 삭제하시겠습니까?')){
-                axios.delete('/replies/' + this.replyModifyRno)
-                .then((response) => {
-                    console.log('서버 응답:', response.data);
-                })
-                .catch(error => {
-                    console.error('서버 오류:', error);
-                });
-                window.location.reload(true);
+                try{
+                    const response = await axios.delete('/replies/' + this.replyModifyRno);
+                    console.log(response);
+                    window.location.reload(true);
+                }catch(error){
+                    console.log(error);
+                }
+                
+                // axios.delete('/replies/' + this.replyModifyRno)
+                // .then((response) => {
+                //     console.log('서버 응답:', response.data);
+                // })
+                // .catch(error => {
+                //     console.error('서버 오류:', error);
+                // });
+                // window.location.reload(true);
             }
         },
         getTotalReplyCount(bno){
